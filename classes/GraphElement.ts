@@ -164,6 +164,37 @@ export class Graph {
     this.view.bottom = centerY + newHeight / 2;
   }
 
+  scaleViewWithOrigin(scaleFactor: number, origin: PositionType): void {
+    const viewWidth = this.view.right - this.view.left;
+    const viewHeight = this.view.bottom - this.view.top;
+
+    if (this.size.width === 0 || this.size.height === 0) {
+      return;
+    }
+
+    // Convert mouse position (canvas coordinates) to world coordinates
+    const mouseWorldX =
+      this.view.left + (origin.x / this.size.width) * viewWidth;
+    const mouseWorldY =
+      this.view.top + (origin.y / this.size.height) * viewHeight;
+
+    // In useCanvas, the delta is > 1 for zooming out and < 1 for zooming in.
+    // A larger view corresponds to zooming out.
+    const newWidth = viewWidth * scaleFactor;
+    const newHeight = viewHeight * scaleFactor;
+
+    // Adjust view position to keep the point under the mouse stationary
+    const newLeft = mouseWorldX - (origin.x / this.size.width) * newWidth;
+    const newTop = mouseWorldY - (origin.y / this.size.height) * newHeight;
+
+    this.setView({
+      left: newLeft,
+      right: newLeft + newWidth,
+      top: newTop,
+      bottom: newTop + newHeight,
+    });
+  }
+
   setSize(size: GraphSizeType): void {
     this.size = size;
   }
