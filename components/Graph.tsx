@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import CanvasComponent from "./CanvasComponent";
 import { RectangleType } from "@/lib/types";
+import { GraphRectangle } from "@/classes/GraphRectangle";
+import { Graph as GraphClass } from "@/classes/Graph";
 
 const DEFAULT_GRAPH_VIEW = {
   left: 0,
@@ -10,31 +12,6 @@ const DEFAULT_GRAPH_VIEW = {
   top: 0,
   bottom: 200,
 };
-
-import {
-  Graph as GraphClass,
-  GraphElement,
-  GraphRectangle,
-} from "@/classes/GraphElement";
-// const graphElement = new GraphElement({ x: 0, y: 150 });
-// const graphElement2 = new GraphElement({ x: 75, y: 125 });
-// console.log(
-//   "GraphElement world position:",
-//   graphElement.getWorldPosition(DEFAULT_GRAPH_VIEW)
-// );
-// console.log(
-//   "GraphElement graph position:",
-//   graphElement.getGraphPosition(DEFAULT_GRAPH_VIEW)
-// );
-// console.log(
-//   "GraphElement2 world position:",
-//   graphElement2.getWorldPosition(DEFAULT_GRAPH_VIEW)
-// );
-// console.log(
-//   "GraphElement2 graph position:",
-//   graphElement2.getGraphPosition(DEFAULT_GRAPH_VIEW)
-// );
-
 const ENABLE_RANDOM_RECTANGLES = false;
 
 function Graph() {

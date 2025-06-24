@@ -1,6 +1,6 @@
 "use client";
 
-import { Graph } from "@/classes/GraphElement";
+import { Graph } from "@/classes/Graph";
 import { useCanvas } from "@/hooks/useCanvas";
 import React, { useRef, useEffect, useLayoutEffect, useCallback } from "react";
 

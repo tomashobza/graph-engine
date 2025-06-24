@@ -1,4 +1,4 @@
-import { Graph } from "@/classes/GraphElement";
+import { Graph } from "@/classes/Graph";
 import {
   useCallback,
   useEffect,
